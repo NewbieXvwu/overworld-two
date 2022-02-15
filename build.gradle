@@ -26,6 +26,7 @@ dependencies {
 }
 
 processResources {
+  inputs.property "version", project.version
   filesMatching("fabric.mod.json") {
     expand "version": project.version
   }
@@ -33,6 +34,14 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
   options.encoding = "UTF-8"
+  it.options.release = 17
+}
+
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
