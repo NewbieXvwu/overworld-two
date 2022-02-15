@@ -32,7 +32,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-  it.options.release = 17
+  options.encoding = "UTF-8"
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
