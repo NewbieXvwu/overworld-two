@@ -43,8 +43,3 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 }
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-  classifier = "sources"
-  from sourceSets.main.allSource
-}
